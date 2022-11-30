@@ -48,6 +48,10 @@ public enum ResultStatus {
         return count;
     }
 
+    public boolean isMatch(ResultStatus status) {
+        return this == status;
+    }
+
     public int getCount() {
         return count;
     }

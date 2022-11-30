@@ -10,10 +10,10 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Result {
-    public static final int INITIAL_COUNT = 0;
     private final DecimalFormat decimalFormat = new DecimalFormat("#,###.0%");
     public static final String messageFormat = "{0}개 일치 ({1}원) - {2}개\n";
     public static final String bonusBallMessageFormat = "{0}개 일치, 보너스 볼 일치 ({1}원) - {2}개\n";
+    public static final int INITIAL_COUNT = 0;
 
     private final Map<ResultStatus, Integer> result;
     private final float purchaseAmount;
@@ -56,7 +56,7 @@ public class Result {
         if (value > 0) {
             totalAmount += key.getPrice();
         }
-        if (key == ResultStatus.FOURTH) {
+        if (ResultStatus.FOURTH.isMatch(key)) {
             return MessageFormat.format(bonusBallMessageFormat, key.getCount(), key.getPrice(), value);
         }
         return MessageFormat.format(messageFormat, key.getCount(), key.getPrice(), value);
