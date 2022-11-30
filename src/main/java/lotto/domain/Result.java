@@ -35,11 +35,20 @@ public class Result {
     @Override
     public String toString() {
         StringBuilder buffer = new StringBuilder();
-        for (Map.Entry<ResultStatus, Integer> e : result.entrySet()) {
-            if (e.getKey() == ResultStatus.NONE1) break;
-            ResultStatus key = e.getKey();
-            buffer.append(MessageFormat.format(messageFormat, key.getCount(), key.getPrice(), e.getValue()));
+        for (Map.Entry<ResultStatus, Integer> entry : result.entrySet()) {
+            if (entry.getKey() == ResultStatus.NONE1) {
+                break;
+            }
+            buffer.append(getResult(entry));
         }
         return buffer.toString();
+    }
+
+    private String getResult(Map.Entry<ResultStatus, Integer> entry) {
+        ResultStatus key = entry.getKey();
+        if (key == ResultStatus.FOURTH) {
+            return MessageFormat.format(bonusBallMessageFormat, key.getCount(), key.getPrice(), entry.getValue());
+        }
+        return MessageFormat.format(messageFormat, key.getCount(), key.getPrice(), entry.getValue());
     }
 }
