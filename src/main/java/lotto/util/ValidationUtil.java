@@ -13,11 +13,20 @@ public class ValidationUtil {
         }
     }
 
-    public static int isValidAmount(int value) {
+    public static int isValidAmount(String input) {
+        int value = isDigit(input);
         if (!ConstVariable.isValidAmount(value)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
         }
         return value / ConstVariable.UNIT.getValue();
+    }
+
+    private static int isDigit(String input) {
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
+        }
     }
 
     public static void isValidLottoNumbers(String input) {

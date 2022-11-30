@@ -41,16 +41,16 @@ class ValidationUtilTest {
 
         @DisplayName("1000원 단위의 입력은 통과")
         @ParameterizedTest
-        @ValueSource(ints = {1000, 2000, 12000})
-        void case1(int value) {
+        @ValueSource(strings = {"1000", "2000", "12000"})
+        void case1(String value) {
             assertThatCode(() -> ValidationUtil.isValidAmount(value))
                     .doesNotThrowAnyException();
         }
 
         @DisplayName("1000원 단위의 입력이 아니면 에러 발생")
         @ParameterizedTest
-        @ValueSource(ints = {100, 999, 1001})
-        void case2(int value) {
+        @ValueSource(strings = {"100", "999", "1001"})
+        void case2(String value) {
             assertThatThrownBy(() -> ValidationUtil.isValidAmount(value))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.NOT_VALID_AMOUNT.getValue());
