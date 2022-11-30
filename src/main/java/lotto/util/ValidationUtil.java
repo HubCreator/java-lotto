@@ -54,4 +54,12 @@ public class ValidationUtil {
         }
         return value;
     }
+
+    public static int isValidBonusNumber(Lotto lotto, int bonusNumber) {
+        isValidRange(bonusNumber);
+        if (lotto.contains(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_BONUS_NUMBER.getValue());
+        }
+        return bonusNumber;
+    }
 }

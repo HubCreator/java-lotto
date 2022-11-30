@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.util.ValidationUtil;
+
 import java.util.List;
 
 public class WinLotto extends Lotto {
@@ -7,6 +9,7 @@ public class WinLotto extends Lotto {
 
     public WinLotto(List<Integer> winNumbers, int bonusNumber) {
         super(winNumbers);
+        ValidationUtil.isValidBonusNumber(this, bonusNumber);
         this.bonusNumber = bonusNumber;
     }
 
