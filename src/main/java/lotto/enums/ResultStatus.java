@@ -15,19 +15,19 @@ public enum ResultStatus {
 
     private final int count;
     private final int price;
-    private final boolean hasbonusNumber;
+    private final boolean hasBonusNumber;
 
-    ResultStatus(int count, int price, boolean hasbonusNumber) {
+    ResultStatus(int count, int price, boolean hasBonusNumber) {
         this.count = count;
         this.price = price;
-        this.hasbonusNumber = hasbonusNumber;
+        this.hasBonusNumber = hasBonusNumber;
     }
 
     public static ResultStatus getStatus(WinLotto winLotto, Lotto generatedLotto) {
         int count = countMatchedNumber(winLotto, generatedLotto);
         boolean hasBonusNumber = hasBonusNumber(winLotto, generatedLotto);
         for (ResultStatus value : ResultStatus.values()) {
-            if (value.count == count && value.hasbonusNumber == hasBonusNumber) {
+            if (value.count == count && value.hasBonusNumber == hasBonusNumber) {
                 return value;
             }
         }
