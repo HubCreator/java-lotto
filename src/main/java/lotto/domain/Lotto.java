@@ -2,12 +2,13 @@ package lotto.domain;
 
 import lotto.enums.ConstVariable;
 import lotto.enums.ErrorMessage;
+import lotto.util.ValidationUtil;
 
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Lotto implements Iterable<Integer>{
+public class Lotto implements Iterable<Integer> {
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -18,6 +19,14 @@ public class Lotto implements Iterable<Integer>{
     private void validate(List<Integer> numbers) {
         if (!ConstVariable.SIZE.isMatch(numbers.size())) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_MATCH_SIZE.getValue());
+        }
+        isNotDistinct(numbers);
+    }
+
+    private void isNotDistinct(List<Integer> numbers) {
+        long count = numbers.stream().distinct().count();
+        if (count != numbers.size()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_DISTINCT.getValue());
         }
     }
 
