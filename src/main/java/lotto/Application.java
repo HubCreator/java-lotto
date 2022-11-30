@@ -1,6 +1,7 @@
 package lotto;
 
 import lotto.domain.Lottos;
+import lotto.domain.Result;
 import lotto.domain.WinLotto;
 import lotto.view.InputView;
 import lotto.view.OutputView;
@@ -11,7 +12,8 @@ public class Application {
     public static void main(String[] args) {
         Lottos generatedLottos = purchaseLotto();
         WinLotto winLotto = getWinLotto();
-        winLotto.getResult(generatedLottos);
+        Result result = winLotto.getResult(generatedLottos);
+        OutputView.printResult(result);
     }
 
     private static Lottos purchaseLotto() {

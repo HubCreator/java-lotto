@@ -10,7 +10,11 @@ public class WinLotto extends Lotto {
         this.bonusNumber = bonusNumber;
     }
 
-    public void getResult(Lottos generatedLottos) {
+    public Result getResult(Lottos generatedLottos) {
+        return new Result(this, generatedLottos);
+    }
 
+    public int getBonusNumber() {
+        return bonusNumber;
     }
 }

@@ -4,9 +4,10 @@ import lotto.enums.ConstVariable;
 import lotto.enums.ErrorMessage;
 
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class Lotto {
+public class Lotto implements Iterable<Integer>{
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -27,5 +28,15 @@ public class Lotto {
 
     public boolean contains(int value) {
         return numbers.contains(value);
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return numbers.iterator();
+    }
+
+    @Override
+    public String toString() {
+        return numbers.toString();
     }
 }
