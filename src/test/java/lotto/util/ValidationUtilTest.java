@@ -1,11 +1,15 @@
 package lotto.util;
 
+import lotto.domain.Lotto;
 import lotto.enums.ErrorMessage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -86,6 +90,40 @@ class ValidationUtilTest {
                         .hasMessage(ErrorMessage.NOT_VALID_NUMBERS.getValue());
             }
         }
+    }
 
+    @DisplayName("보너스 번호를 ")
+    @Nested
+    class DescribeInputWinBonusNumbersTest {
+
+        Lotto lotto;
+
+        @BeforeEach
+        void init() {
+            lotto = new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6));
+        }
+
+        @Nested
+        @DisplayName("입력 받을 때에는")
+        class ContextWithNotDigitTest {
+
+            @DisplayName("입력 유효 범위를 초과하면 예외가 발생한다.")
+            @ParameterizedTest
+            @ValueSource(strings = {"-1", "0", "46"})
+            void it_returns_exception1(String value) {
+                assertThatThrownBy(() -> ValidationUtil.isValidBonusNumber(lotto, value))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.OUT_OF_BOUNDS_ERROR.getValue());
+            }
+
+            @DisplayName("숫자가 아닌 문자가 입력되면 예외가 발생한다.")
+            @ParameterizedTest
+            @ValueSource(strings = {"*", "!"})
+            void it_returns_exception2(String value) {
+                assertThatThrownBy(() -> ValidationUtil.isValidBonusNumber(lotto, value))
+                        .isInstanceOf(IllegalArgumentException.class)
+                        .hasMessage(ErrorMessage.IS_NOT_DIGIT.getValue());
+            }
+        }
     }
 }

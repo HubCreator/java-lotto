@@ -1,5 +1,6 @@
 package lotto.util;
 
+import lotto.domain.Lotto;
 import lotto.enums.ConstVariable;
 import lotto.enums.ErrorMessage;
 
@@ -27,7 +28,7 @@ public class ValidationUtil {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIGIT.getValue());
         }
     }
 
@@ -45,9 +46,10 @@ public class ValidationUtil {
         return result;
     }
 
-    public static int isValidBonusNumber(List<Integer> winNumbers, String bonusNumber) {
+    public static int isValidBonusNumber(Lotto lotto, String bonusNumber) {
         int value = isDigit(bonusNumber);
-        if (winNumbers.contains(value)) {
+        isValidRange(value);
+        if (lotto.contains(value)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_VALID_BONUS_NUMBER.getValue());
         }
         return value;
