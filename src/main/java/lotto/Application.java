@@ -13,7 +13,9 @@ public class Application {
         Lottos generatedLottos = purchaseLotto();
         WinLotto winLotto = getWinLotto();
         Result result = winLotto.getResult(generatedLottos);
-        OutputView.printResult(result);
+
+        OutputView.print(result.getStatistics());
+        OutputView.print(result.getAvenue());
     }
 
     private static Lottos purchaseLotto() {
