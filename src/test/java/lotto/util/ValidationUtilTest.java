@@ -3,6 +3,7 @@ package lotto.util;
 import lotto.enums.ErrorMessage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -33,10 +34,28 @@ class ValidationUtilTest {
         }
     }
 
-    @DisplayName("중복되지 않은 6개의 로또 번호가 생성됐는지 확인한다.")
+    @DisplayName("입력된 금액이 1000원 단위인지 확인한다.")
     @Nested
     class ValidLottos {
 
+        @DisplayName("1000원 단위의 입력은 통과")
+        @ParameterizedTest
+        @ValueSource(ints = {1000, 2000, 12000})
+        void case1(int value) {
+            assertThatCode(() -> ValidationUtil.isValidAmount(value))
+                    .doesNotThrowAnyException();
+        }
+
+        @DisplayName("1000원 단위의 입력이 아니면 에러 발생")
+        @ParameterizedTest
+        @ValueSource(ints = {100, 999, 1001})
+        void case2(int value) {
+            assertThatThrownBy(() -> ValidationUtil.isValidAmount(value))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessage(ErrorMessage.NOT_VALID_AMOUNT.getValue());
+        }
     }
+
+
 
 }

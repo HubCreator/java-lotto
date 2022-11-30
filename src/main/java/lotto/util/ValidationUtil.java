@@ -10,4 +10,10 @@ public class ValidationUtil {
             throw new IllegalArgumentException(ErrorMessage.OUT_OF_BOUNDS_ERROR.getValue());
         }
     }
+
+    public static void isValidAmount(int value) {
+        if (value % 1000 != 0) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
+        }
+    }
 }
