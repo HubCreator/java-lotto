@@ -1,6 +1,7 @@
 package lotto.domain;
 
 import lotto.enums.ConstVariable;
+import lotto.enums.ResultMessage;
 import lotto.enums.ResultStatus;
 import lotto.enums.ViewMessage;
 
@@ -10,10 +11,8 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class Result {
-    private final DecimalFormat decimalFormat = new DecimalFormat("#,###.0%");
-    public static final String messageFormat = "{0}개 일치 ({1}원) - {2}개\n";
-    public static final String bonusBallMessageFormat = "{0}개 일치, 보너스 볼 일치 ({1}원) - {2}개\n";
     public static final int INITIAL_COUNT = 0;
+    private final DecimalFormat decimalFormat = new DecimalFormat(ResultMessage.DECIMAL_FORMAT.getValue());
 
     private final Map<ResultStatus, Integer> result;
     private final float purchaseAmount;
@@ -57,9 +56,9 @@ public class Result {
             totalAmount += key.getPrice();
         }
         if (ResultStatus.SECOND.isMatch(key)) {
-            return MessageFormat.format(bonusBallMessageFormat, key.getCount(), key.getPrice(), value);
+            return MessageFormat.format(ResultMessage.BONUS_BALL_MESSAGE_FORMAT.getValue(), key.getCount(), key.getPrice(), value);
         }
-        return MessageFormat.format(messageFormat, key.getCount(), key.getPrice(), value);
+        return MessageFormat.format(ResultMessage.MESSAGE_FORMAT.getValue(), key.getCount(), key.getPrice(), value);
     }
 
     public String getAvenue() {
