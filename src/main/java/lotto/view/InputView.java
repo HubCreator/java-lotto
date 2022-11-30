@@ -5,6 +5,7 @@ import lotto.domain.Lotto;
 import lotto.enums.ViewMessage;
 import lotto.util.ValidationUtil;
 
+import java.util.Collections;
 import java.util.List;
 
 public class InputView {
@@ -17,7 +18,9 @@ public class InputView {
     public static List<Integer> readWinNumbers() {
         printMessage(ViewMessage.INPUT_WIN_LOTTO_NUMBERS);
         String input = Console.readLine();
-        return ValidationUtil.isValidLottoNumbers(input);
+        List<Integer> validLottoNumbers = ValidationUtil.isValidLottoNumbers(input);
+        Collections.sort(validLottoNumbers);
+        return validLottoNumbers;
     }
 
     public static int readWinBonusNumber(List<Integer> winNumbers) {

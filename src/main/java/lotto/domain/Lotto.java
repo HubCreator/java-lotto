@@ -3,7 +3,6 @@ package lotto.domain;
 import lotto.enums.ConstVariable;
 import lotto.enums.ErrorMessage;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -30,10 +29,6 @@ public class Lotto implements Iterable<Integer> {
     }
 
     // TODO: 추가 기능 구현
-    public void sortNumbers() {
-        Collections.sort(numbers);
-    }
-
     public boolean contains(int value) {
         return numbers.contains(value);
     }

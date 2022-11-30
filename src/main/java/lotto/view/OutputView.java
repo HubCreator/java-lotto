@@ -20,7 +20,6 @@ public class OutputView {
     }
 
     public static void print(Lotto lotto) {
-//        lotto.sortNumbers();
         System.out.println(lotto);
     }
 }
