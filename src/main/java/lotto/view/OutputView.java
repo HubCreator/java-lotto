@@ -11,7 +11,6 @@ public class OutputView {
         print(MessageFormat.format(ViewMessage.OUTPUT_PURCHASE_COUNT.getValue(), lottos.size()));
 
         for (Lotto lotto : lottos) {
-            lotto.sortNumbers();
             print(lotto);
         }
     }
@@ -21,6 +20,7 @@ public class OutputView {
     }
 
     public static void print(Lotto lotto) {
+//        lotto.sortNumbers();
         System.out.println(lotto);
     }
 }

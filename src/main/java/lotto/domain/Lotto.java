@@ -2,7 +2,6 @@ package lotto.domain;
 
 import lotto.enums.ConstVariable;
 import lotto.enums.ErrorMessage;
-import lotto.util.ValidationUtil;
 
 import java.util.Collections;
 import java.util.Iterator;

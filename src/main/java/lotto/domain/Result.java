@@ -56,7 +56,7 @@ public class Result {
         if (value > 0) {
             totalAmount += key.getPrice();
         }
-        if (ResultStatus.FOURTH.isMatch(key)) {
+        if (ResultStatus.SECOND.isMatch(key)) {
             return MessageFormat.format(bonusBallMessageFormat, key.getCount(), key.getPrice(), value);
         }
         return MessageFormat.format(messageFormat, key.getCount(), key.getPrice(), value);

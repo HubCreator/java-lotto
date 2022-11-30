@@ -10,12 +10,17 @@ import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        Lottos generatedLottos = purchaseLotto();
-        WinLotto winLotto = getWinLotto();
-        Result result = winLotto.getResult(generatedLottos);
+        try {
+            Lottos generatedLottos = purchaseLotto();
+            WinLotto winLotto = getWinLotto();
+            Result result = winLotto.getResult(generatedLottos);
 
-        OutputView.print(result.getStatistics());
-        OutputView.print(result.getAvenue());
+            OutputView.print(result.getStatistics());
+            OutputView.print(result.getAvenue());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 
     private static Lottos purchaseLotto() {
