@@ -12,4 +12,16 @@ public enum ConstVariable {
     public int getValue() {
         return value;
     }
+
+    public boolean isMatch(int value) {
+        return this.value == value;
+    }
+
+    public boolean isGreaterThan(int value) {
+        return this.value < value;
+    }
+
+    public boolean isLessThan(int value) {
+        return this.value > value;
+    }
 }

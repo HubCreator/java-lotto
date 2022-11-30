@@ -14,7 +14,7 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != ConstVariable.SIZE.getValue()) {
+        if (ConstVariable.SIZE.isMatch(numbers.size())) {
             throw new IllegalArgumentException(ErrorMessage.IS_NOT_MATCH_SIZE.getValue());
         }
     }
