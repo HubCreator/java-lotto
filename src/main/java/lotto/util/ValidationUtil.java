@@ -15,6 +15,6 @@ public class ValidationUtil {
         if (!ConstVariable.isValidAmount(value)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
         }
-        return value / 1000;
+        return value / ConstVariable.UNIT.getValue();
     }
 }
