@@ -11,6 +11,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class ValidationUtilTest {
 
+    @DisplayName("유효한 범위의 숫자인지 확인한다.")
     @Nested
     class ValidRange {
 
@@ -32,5 +33,10 @@ class ValidationUtilTest {
         }
     }
 
+    @DisplayName("중복되지 않은 6개의 로또 번호가 생성됐는지 확인한다.")
+    @Nested
+    class ValidLottos {
+
+    }
 
 }
