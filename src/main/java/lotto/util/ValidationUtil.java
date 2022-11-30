@@ -11,9 +11,10 @@ public class ValidationUtil {
         }
     }
 
-    public static void isValidAmount(int value) {
-        if (value % 1000 != 0) {
+    public static int isValidAmount(int value) {
+        if (!ConstVariable.isValidAmount(value)) {
             throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
         }
+        return value / 1000;
     }
 }

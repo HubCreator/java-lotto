@@ -55,7 +55,4 @@ class ValidationUtilTest {
                     .hasMessage(ErrorMessage.NOT_VALID_AMOUNT.getValue());
         }
     }
-
-
-
 }
