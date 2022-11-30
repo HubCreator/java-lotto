@@ -1,5 +1,8 @@
 package lotto;
 
+import lotto.enums.ConstVariable;
+import lotto.enums.ErrorMessage;
+
 import java.util.List;
 
 public class Lotto {
@@ -11,8 +14,8 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
-            throw new IllegalArgumentException();
+        if (numbers.size() != ConstVariable.SIZE.getValue()) {
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_MATCH_SIZE.getValue());
         }
     }
 
