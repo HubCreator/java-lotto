@@ -42,4 +42,5 @@ public class Lotto implements Iterable<Integer> {
     public String toString() {
         return numbers.toString();
     }
+
 }

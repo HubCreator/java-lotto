@@ -20,4 +20,8 @@ public class WinLotto extends Lotto {
     public int getBonusNumber() {
         return bonusNumber;
     }
+
+    public boolean hasBonusNumber(Lotto generatedLotto) {
+        return generatedLotto.contains(bonusNumber);
+    }
 }

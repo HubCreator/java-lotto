@@ -33,7 +33,7 @@ public enum ResultStatus {
     }
 
     private static boolean hasBonusNumber(WinLotto winLotto, Lotto generatedLotto) {
-        return generatedLotto.contains(winLotto.getBonusNumber());
+        return winLotto.hasBonusNumber(generatedLotto);
     }
 
     private static int countMatchedNumber(WinLotto winLotto, Lotto generatedLotto) {
