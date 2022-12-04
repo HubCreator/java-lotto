@@ -1,6 +1,7 @@
 package lotto.util;
 
 import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.enums.ErrorMessage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -46,16 +47,16 @@ class ValidationUtilTest {
         @DisplayName("1000원 단위의 입력은 통과")
         @ParameterizedTest
         @ValueSource(strings = {"1000", "2000", "12000"})
-        void case1(String value) {
-            assertThatCode(() -> ValidationUtil.isValidAmount(value))
+        void case1(Integer value) {
+            assertThatCode(() -> Lottos.create(value))
                     .doesNotThrowAnyException();
         }
 
         @DisplayName("1000원 단위의 입력이 아니면 에러 발생")
         @ParameterizedTest
         @ValueSource(strings = {"100", "999", "1001"})
-        void case2(String value) {
-            assertThatThrownBy(() -> ValidationUtil.isValidAmount(value))
+        void case2(Integer value) {
+            assertThatThrownBy(() -> Lottos.create(value))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessage(ErrorMessage.NOT_VALID_AMOUNT.getValue());
         }

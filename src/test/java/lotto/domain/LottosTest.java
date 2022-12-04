@@ -10,8 +10,8 @@ class LottosTest {
 
     @DisplayName("원하는 만큼의 로또를 발행할 수 있다.")
     @ParameterizedTest
-    @ValueSource(ints = {0, 3, 4, 5, 20, 100})
+    @ValueSource(ints = {0, 3000, 4000, 5000, 20000, 100000})
     void case1(int value) {
-        assertThat(Lottos.create(value).size()).isSameAs(value);
+        assertThat(Lottos.create(value).size()).isSameAs(value / 1000);
     }
 }

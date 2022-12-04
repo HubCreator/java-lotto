@@ -23,8 +23,7 @@ public class Application {
     }
 
     private static Lottos purchaseLotto() {
-        int amount = InputView.readPurchaseAmount();
-        Lottos lottos = Lottos.create(amount);
+        Lottos lottos = Lottos.create(InputView.readPurchaseAmount());
         OutputView.printPurchaseAmount(lottos);
         return lottos;
     }

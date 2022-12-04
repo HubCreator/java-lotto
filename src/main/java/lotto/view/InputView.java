@@ -11,8 +11,7 @@ import java.util.List;
 public class InputView {
     public static int readPurchaseAmount() {
         printMessage(ViewMessage.INPUT_AMOUNT_MESSAGE);
-        String input = Console.readLine();
-        return ValidationUtil.isValidAmount(input);
+        return ValidationUtil.isDigit(Console.readLine());
     }
 
     public static List<Integer> readWinNumbers() {

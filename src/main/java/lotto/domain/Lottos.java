@@ -1,5 +1,7 @@
 package lotto.domain;
 
+import lotto.enums.ConstVariable;
+import lotto.enums.ErrorMessage;
 import lotto.util.GenerateRandomNumberUtil;
 
 import java.util.ArrayList;
@@ -14,11 +16,19 @@ public class Lottos implements Iterable<Lotto> {
     }
 
     public static Lottos create(int amount) {
+        int count = validateAmount(amount);
         List<Lotto> lottos = new ArrayList<>();
-        for (int index = 0; index < amount; index++) {
+        for (int index = 0; index < count; index++) {
             lottos.add(GenerateRandomNumberUtil.generateLotto());
         }
         return new Lottos(lottos);
+    }
+
+    private static int validateAmount(int amount) {
+        if (!ConstVariable.isValidAmount(amount)) {
+            throw new IllegalArgumentException(ErrorMessage.NOT_VALID_AMOUNT.getValue());
+        }
+        return amount / ConstVariable.UNIT.getValue();
     }
 
     public int size() {
