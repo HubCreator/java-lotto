@@ -56,9 +56,11 @@ public class Result {
             totalAmount += key.getPrice();
         }
         if (ResultStatus.SECOND.isMatch(key)) {
-            return MessageFormat.format(ResultMessage.BONUS_BALL_MESSAGE_FORMAT.getValue(), key.getCount(), key.getPrice(), value);
+            return MessageFormat.format(ResultMessage.BONUS_BALL_MESSAGE_FORMAT.getValue(),
+                    key.getCount(), key.getPrice(), value);
         }
-        return MessageFormat.format(ResultMessage.MESSAGE_FORMAT.getValue(), key.getCount(), key.getPrice(), value);
+        return MessageFormat.format(ResultMessage.MESSAGE_FORMAT.getValue(),
+                key.getCount(), key.getPrice(), value);
     }
 
     public String getAvenue() {
