@@ -35,15 +35,13 @@ public class Result {
         result.put(ResultStatus.THIRD, INITIAL_COUNT);
         result.put(ResultStatus.SECOND, INITIAL_COUNT);
         result.put(ResultStatus.FIRST, INITIAL_COUNT);
-        result.put(ResultStatus.NONE1, INITIAL_COUNT);
-        result.put(ResultStatus.NONE2, INITIAL_COUNT);
-        result.put(ResultStatus.NONE3, INITIAL_COUNT);
+        result.put(ResultStatus.NONE, INITIAL_COUNT);
     }
 
     public String getStatistics() {
         StringBuilder buffer = new StringBuilder();
         for (Map.Entry<ResultStatus, Integer> entry : result.entrySet()) {
-            if (entry.getKey() == ResultStatus.NONE1) {
+            if (entry.getKey() == ResultStatus.NONE) {
                 break;
             }
             buffer.append(getResult(entry.getKey(), entry.getValue()));

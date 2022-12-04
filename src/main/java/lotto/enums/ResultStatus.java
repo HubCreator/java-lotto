@@ -9,9 +9,7 @@ public enum ResultStatus {
     THIRD(5, 1_500_000, false),
     FOURTH(4, 50_000, false),
     FIFTH(3, 5_000, false),
-    NONE1(2, 0, false),
-    NONE2(1, 0, false),
-    NONE3(0, 0, false);
+    NONE(2, 0, false);
 
     private final int count;
     private final int price;
@@ -31,7 +29,7 @@ public enum ResultStatus {
                 return value;
             }
         }
-        return NONE3;
+        return NONE;
     }
 
     private static boolean hasBonusNumber(WinLotto winLotto, Lotto generatedLotto) {
