@@ -1,7 +1,7 @@
 package lotto.enums;
 
 public enum ResultMessage {
-    DECIMAL_FORMAT("#,###.0%"),
+    DECIMAL_FORMAT("#,##0.0%"),
     MESSAGE_FORMAT("{0}개 일치 ({1}원) - {2}개\n"),
     BONUS_BALL_MESSAGE_FORMAT("{0}개 일치, 보너스 볼 일치 ({1}원) - {2}개\n");
 
