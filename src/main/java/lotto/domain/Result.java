@@ -1,10 +1,11 @@
 package lotto.domain;
 
 import lotto.enums.ConstVariable;
-import lotto.enums.ResultMessage;
 import lotto.enums.ResultStatus;
 import lotto.enums.ViewMessage;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.MessageFormat;
 import java.util.LinkedHashMap;
@@ -12,11 +13,11 @@ import java.util.Map;
 
 public class Result {
     public static final int INITIAL_COUNT = 0;
-    private final DecimalFormat decimalFormat = new DecimalFormat(ResultMessage.DECIMAL_FORMAT.getValue());
 
+    private final DecimalFormat decimalFormat = new DecimalFormat(ResultMessage.DECIMAL_FORMAT.value);
     private final Map<ResultStatus, Integer> result;
     private final float purchaseAmount;
-    private float totalAmount = 0;
+    private BigDecimal totalAmount = BigDecimal.ZERO;
 
 
     public Result(WinLotto winLotto, Lottos generatedLottos) {
@@ -51,18 +52,31 @@ public class Result {
 
     private String getResult(ResultStatus key, int value) {
         if (value > 0) {
-            totalAmount += key.getPrice();
+            totalAmount = totalAmount.add(BigDecimal.valueOf(key.getPrice()));
         }
         if (ResultStatus.SECOND.isMatch(key)) {
-            return MessageFormat.format(ResultMessage.BONUS_BALL_MESSAGE_FORMAT.getValue(),
+            return MessageFormat.format(ResultMessage.BONUS_BALL_MESSAGE_FORMAT.value,
                     key.getCount(), key.getPrice(), value);
         }
-        return MessageFormat.format(ResultMessage.MESSAGE_FORMAT.getValue(),
+        return MessageFormat.format(ResultMessage.MESSAGE_FORMAT.value,
                 key.getCount(), key.getPrice(), value);
     }
 
     public String getAvenue() {
-        return MessageFormat.format(ViewMessage.OUTPUT_TOTAL_AVENUE.getValue(),
-                decimalFormat.format(totalAmount / purchaseAmount));
+        BigDecimal result = totalAmount.divide(BigDecimal.valueOf(purchaseAmount))
+                .setScale(3, RoundingMode.HALF_EVEN);
+        return MessageFormat.format(ViewMessage.OUTPUT_TOTAL_AVENUE.getValue(), decimalFormat.format(result));
+    }
+
+    private enum ResultMessage {
+        DECIMAL_FORMAT("#,##0.0%"),
+        MESSAGE_FORMAT("{0}개 일치 ({1}원) - {2}개\n"),
+        BONUS_BALL_MESSAGE_FORMAT("{0}개 일치, 보너스 볼 일치 ({1}원) - {2}개\n");
+
+        private final String value;
+
+        ResultMessage(String value) {
+            this.value = value;
+        }
     }
 }
