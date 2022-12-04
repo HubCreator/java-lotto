@@ -20,7 +20,7 @@ public class ValidationUtil {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIGIT.getValue());
+            throw new IllegalArgumentException(ErrorMessage.IS_NOT_DIGIT.getValue(), e);
         }
     }
 
