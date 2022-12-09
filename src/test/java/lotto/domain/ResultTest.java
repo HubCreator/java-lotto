@@ -27,7 +27,7 @@ class ResultTest {
         void case1() {
             result = new Result(winLotto, new Lottos(Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 6)))));
             result.getStatistics();
-            assertThat(result.getAvenue()).isEqualTo("총 수익률은 200,000,000.0%입니다.");
+            assertThat(result.getRevenue()).isEqualTo("총 수익률은 200,000,000.0%입니다.");
         }
 
         @DisplayName("2등")
@@ -35,7 +35,7 @@ class ResultTest {
         void case2() {
             result = new Result(winLotto, new Lottos(Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 7)))));
             result.getStatistics();
-            assertThat(result.getAvenue()).isEqualTo("총 수익률은 3,000,000.0%입니다.");
+            assertThat(result.getRevenue()).isEqualTo("총 수익률은 3,000,000.0%입니다.");
         }
 
         @DisplayName("3등")
@@ -43,7 +43,7 @@ class ResultTest {
         void case3() {
             result = new Result(winLotto, new Lottos(Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 5, 8)))));
             result.getStatistics();
-            assertThat(result.getAvenue()).isEqualTo("총 수익률은 150,000.0%입니다.");
+            assertThat(result.getRevenue()).isEqualTo("총 수익률은 150,000.0%입니다.");
         }
 
         @DisplayName("4등")
@@ -51,7 +51,7 @@ class ResultTest {
         void case4() {
             result = new Result(winLotto, new Lottos(Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 4, 8, 9)))));
             result.getStatistics();
-            assertThat(result.getAvenue()).isEqualTo("총 수익률은 5,000.0%입니다.");
+            assertThat(result.getRevenue()).isEqualTo("총 수익률은 5,000.0%입니다.");
         }
 
         @DisplayName("5등")
@@ -59,7 +59,7 @@ class ResultTest {
         void case5() {
             result = new Result(winLotto, new Lottos(Arrays.asList(new Lotto(Arrays.asList(1, 2, 3, 8, 9, 10)))));
             result.getStatistics();
-            assertThat(result.getAvenue()).isEqualTo("총 수익률은 500.0%입니다.");
+            assertThat(result.getRevenue()).isEqualTo("총 수익률은 500.0%입니다.");
         }
     }
 

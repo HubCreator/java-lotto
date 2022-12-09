@@ -62,10 +62,10 @@ public class Result {
                 key.getCount(), key.getPrice(), value);
     }
 
-    public String getAvenue() {
+    public String getRevenue() {
         BigDecimal result = totalAmount.divide(BigDecimal.valueOf(purchaseAmount))
                 .setScale(3, RoundingMode.HALF_EVEN);
-        return MessageFormat.format(ViewMessage.OUTPUT_TOTAL_AVENUE.getValue(), decimalFormat.format(result));
+        return MessageFormat.format(ViewMessage.OUTPUT_TOTAL_REVENUE.getValue(), decimalFormat.format(result));
     }
 
     private enum ResultMessage {

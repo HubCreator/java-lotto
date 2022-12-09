@@ -16,7 +16,7 @@ public class Application {
             Result result = winLotto.getResult(generatedLottos);
 
             OutputView.print(result.getStatistics());
-            OutputView.print(result.getAvenue());
+            OutputView.print(result.getRevenue());
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
