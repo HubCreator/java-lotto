@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.MessageFormat;
-import java.util.LinkedHashMap;
+import java.util.EnumMap;
 import java.util.Map;
 
 public class Result {
@@ -21,22 +21,17 @@ public class Result {
 
 
     public Result(WinLotto winLotto, Lottos generatedLottos) {
-        result = new LinkedHashMap<>();
-        initMap();
+        result = new EnumMap<>(ResultStatus.class);
         for (Lotto generatedLotto : generatedLottos) {
             ResultStatus status = ResultStatus.getStatus(winLotto, generatedLotto);
-            result.put(status, result.get(status) + 1);
+            result.put(status, result.getOrDefault(status, 0) + 1);
+        }
+        for (ResultStatus value : ResultStatus.values()) {
+            if (!result.containsKey(value)) {
+                result.put(value, INITIAL_COUNT);
+            }
         }
         this.purchaseAmount = generatedLottos.size() * ConstVariable.UNIT.getValue();
-    }
-
-    private void initMap() {
-        result.put(ResultStatus.FIFTH, INITIAL_COUNT);
-        result.put(ResultStatus.FOURTH, INITIAL_COUNT);
-        result.put(ResultStatus.THIRD, INITIAL_COUNT);
-        result.put(ResultStatus.SECOND, INITIAL_COUNT);
-        result.put(ResultStatus.FIRST, INITIAL_COUNT);
-        result.put(ResultStatus.NONE, INITIAL_COUNT);
     }
 
     public String getStatistics() {

@@ -19,7 +19,6 @@ public enum ResultStatus {
         this.count = count;
         this.price = price;
         this.hasBonusNumber = hasBonusNumber;
-        String hello = String.format("%s", "dkssud");
     }
 
     public static ResultStatus getStatus(WinLotto winLotto, Lotto generatedLotto) {
