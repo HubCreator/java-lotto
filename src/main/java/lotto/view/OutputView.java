@@ -21,7 +21,8 @@ public final class OutputView {
 
     public void printGeneratedLottos(PrintGeneratedLottosDto dto) {
         Lottos lottos = dto.getLottos();
-        StringBuilder result = new StringBuilder(String.format(ViewMessage.PURCHASE_AMOUNT.message, lottos.getLottoCount()));
+        StringBuilder result = new StringBuilder(
+                String.format(ViewMessage.PURCHASE_AMOUNT.message, lottos.getLottoCount()));
 
         for (Lotto lotto : lottos) {
             result.append(lotto.toString() + "\n");
