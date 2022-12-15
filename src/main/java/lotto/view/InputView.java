@@ -1,7 +1,14 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
+import lotto.dto.input.InputWinLotto;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public final class InputView {
     private InputView() {
@@ -21,6 +28,24 @@ public final class InputView {
         return new InputPurchaseAmountDto(result);
     }
 
+    public InputWinLotto inputWinLotto() {
+        printMessage(ViewMessage.INPUT_WIN_LOTTO);
+        String input = readUserInput();
+        return new InputWinLotto(validateWinLotto(input));
+    }
+
+    public InputBonusNumber inputBonusNumber() {
+        printMessage(ViewMessage.INPUT_BONUS_NUMBER);
+        String input = readUserInput();
+        return new InputBonusNumber(validateDigit(input));
+    }
+
+    private List<Integer> validateWinLotto(String input) {
+        return Arrays.stream(input.split(","))
+                .map(this::validateDigit)
+                .collect(Collectors.toList());
+    }
+
     private int validateDigit(String input) {
         try {
             return Integer.parseInt(input);
@@ -38,7 +63,9 @@ public final class InputView {
     }
 
     private enum ViewMessage {
-        INPUT_PURCHASE_AMOUNT("구입금액을 입력해 주세요.");
+        INPUT_PURCHASE_AMOUNT("구입금액을 입력해 주세요."),
+        INPUT_WIN_LOTTO("당첨 번호를 입력해 주세요."),
+        INPUT_BONUS_NUMBER("보너스 번호를 입력해 주세요.");
 
         private final String message;
 

@@ -1,6 +1,8 @@
 package lotto.view;
 
+import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
+import lotto.dto.input.InputWinLotto;
 import lotto.dto.output.PrintGeneratedLottosDto;
 import lotto.view.exception.NotFoundViewException;
 
@@ -21,8 +23,8 @@ public class IOViewResolver {
 
     private void initInputViewMappings(InputView inputView) {
         inputViewMap.put(InputPurchaseAmountDto.class, inputView::inputPurchaseAmount);
-//        inputViewMap.put(ReadItemsInfoDto.class, inputView::readItemsInfo);
-//        inputViewMap.put(ReadMoneyDto.class, inputView::readMoney);
+        inputViewMap.put(InputWinLotto.class, inputView::inputWinLotto);
+        inputViewMap.put(InputBonusNumber.class, inputView::inputBonusNumber);
 //        inputViewMap.put(ReadItemNameDto.class, inputView::readItemName);
 
     }
