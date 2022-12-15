@@ -53,5 +53,4 @@ public class Lotto {
             this.message = errorHead +  message;
         }
     }
-
 }
