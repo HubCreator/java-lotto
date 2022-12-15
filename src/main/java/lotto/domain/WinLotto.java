@@ -34,12 +34,10 @@ public final class WinLotto extends Lotto {
     private enum ErrorMessage {
         INVALID_BONUS_NUMBER("보너스 번호는 로또 번호와 중복되지 않아야 합니다.");
 
-        private static final String errorHead = "[ERROR] ";
-
         private final String message;
 
         ErrorMessage(String message) {
-            this.message = errorHead + message;
+            this.message =  message;
         }
     }
 }

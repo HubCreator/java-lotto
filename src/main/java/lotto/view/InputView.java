@@ -79,12 +79,10 @@ public final class InputView {
     private enum ErrorMessage {
         NOT_DIGIT("숫자를 입력해야 합니다.");
 
-        private static final String errorHead = "[ERROR] ";
-
         private final String message;
 
         ErrorMessage(String message) {
-            this.message = errorHead + message;
+            this.message = message;
         }
     }
 }

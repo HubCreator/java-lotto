@@ -43,12 +43,10 @@ public class Lotto {
     private enum ErrorMessage {
         INVALID_COUNT("%d자리 숫자를 입력해야 합니다.", COUNT);
 
-        private static final String errorHead = "[ERROR] ";
-
         private final String message;
 
         ErrorMessage(String message, Object... replaces) {
-            this.message = errorHead + String.format(message, replaces);
+            this.message = String.format(message, replaces);
         }
     }
 }

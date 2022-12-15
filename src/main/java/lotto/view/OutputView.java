@@ -11,6 +11,8 @@ import lotto.dto.output.PrintWinStatisticsDto;
 import java.util.Map;
 
 public final class OutputView {
+    private static final String errorHead = "[ERROR] ";
+
     private OutputView() {
     }
 
@@ -58,7 +60,7 @@ public final class OutputView {
     }
 
     public void printException(PrintExceptionDto dto) {
-        print(dto.getException().getMessage());
+        print(errorHead + dto.getException().getMessage());
     }
 
     public void print(String message) {
