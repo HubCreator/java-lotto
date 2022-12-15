@@ -27,8 +27,6 @@ public class IOViewResolver {
         inputViewMap.put(InputPurchaseAmountDto.class, inputView::inputPurchaseAmount);
         inputViewMap.put(InputWinLotto.class, inputView::inputWinLotto);
         inputViewMap.put(InputBonusNumber.class, inputView::inputBonusNumber);
-//        inputViewMap.put(ReadItemNameDto.class, inputView::readItemName);
-
     }
 
     private void initOutputViewMappings(OutputView outputView) {

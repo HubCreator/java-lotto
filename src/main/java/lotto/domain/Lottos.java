@@ -2,9 +2,10 @@ package lotto.domain;
 
 import lotto.util.RandomNumberGenerator;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Lottos implements Iterable<Lotto>{
 
@@ -17,11 +18,10 @@ public class Lottos implements Iterable<Lotto>{
     }
 
     public static Lottos create(int purchaseAmount, RandomNumberGenerator generator) {
-        int count = validateAmount(purchaseAmount);
-        List<Lotto> result = new ArrayList<>();
-        for (int index = 0; index < count; index++) {
-            result.add(Lotto.create(generator));
-        }
+        List<Lotto> result = IntStream.range(0, validateAmount(purchaseAmount))
+                .mapToObj(m -> Lotto.create(generator))
+                .collect(Collectors.toList());
+
         return new Lottos(result);
     }
 
@@ -42,14 +42,14 @@ public class Lottos implements Iterable<Lotto>{
     }
 
     private enum ErrorMessage {
-        INVALID_UNIT("1000 단위로 입력해야 합니다.");
+        INVALID_UNIT("%d 단위로 입력해야 합니다.", UNIT),;
 
         private static final String errorHead = "[ERROR] ";
 
         private final String message;
 
-        ErrorMessage(String message) {
-            this.message = errorHead + message;
+        ErrorMessage(String message, Object... replaces) {
+            this.message = errorHead + String.format(message, replaces);
         }
     }
 }

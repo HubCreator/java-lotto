@@ -2,7 +2,6 @@ package lotto;
 
 import lotto.controller.Controller;
 import lotto.domain.Status;
-import lotto.util.RandomNumberGenerator;
 import lotto.util.StandardRandomNumberGenerator;
 import lotto.view.IOViewResolver;
 import lotto.view.InputView;
@@ -17,8 +16,7 @@ public final class Manager {
 
     public static void run() {
         IOViewResolver ioViewResolver = new IOViewResolver(InputView.getInstance(), OutputView.getInstance());
-        RandomNumberGenerator generator = new StandardRandomNumberGenerator();
-        Controller controller = new Controller(ioViewResolver, generator);
+        Controller controller = new Controller(ioViewResolver, new StandardRandomNumberGenerator());
         Status currentStatus = INITIAL_STATUS;
 
         while (currentStatus != Status.EXIT) {
