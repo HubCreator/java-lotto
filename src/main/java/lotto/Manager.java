@@ -20,7 +20,7 @@ public final class Manager {
         Status currentStatus = INITIAL_STATUS;
 
         while (currentStatus != Status.EXIT) {
-            controller.run();
+            currentStatus = controller.run(currentStatus);
         }
     }
 }

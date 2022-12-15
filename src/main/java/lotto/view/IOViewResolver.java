@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.dto.input.InputPurchaseAmountDto;
 import lotto.view.exception.NotFoundViewException;
 
 import java.util.HashMap;
@@ -18,7 +19,7 @@ public class IOViewResolver {
     }
 
     private void initInputViewMappings(InputView inputView) {
-//        inputViewMap.put(ReadChangeDto.class, inputView::readChange);
+        inputViewMap.put(InputPurchaseAmountDto.class, inputView::inputPurchaseAmount);
 //        inputViewMap.put(ReadItemsInfoDto.class, inputView::readItemsInfo);
 //        inputViewMap.put(ReadMoneyDto.class, inputView::readMoney);
 //        inputViewMap.put(ReadItemNameDto.class, inputView::readItemName);
