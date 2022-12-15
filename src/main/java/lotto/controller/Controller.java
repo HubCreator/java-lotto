@@ -5,6 +5,7 @@ import lotto.domain.Status;
 import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
 import lotto.dto.input.InputWinLotto;
+import lotto.dto.output.PrintExceptionDto;
 import lotto.dto.output.PrintGeneratedLottosDto;
 import lotto.dto.output.PrintWinStatisticsDto;
 import lotto.util.RandomNumberGenerator;
@@ -36,7 +37,7 @@ public final class Controller {
         try {
             return statusMap.get(status).get();
         } catch (IllegalArgumentException exception) {
-            System.out.println(exception.getMessage());
+            ioViewResolver.outputViewResolve(new PrintExceptionDto(exception));
             return status;
         }
     }

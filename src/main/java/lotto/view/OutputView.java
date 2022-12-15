@@ -3,10 +3,9 @@ package lotto.view;
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
 import lotto.domain.ResultInformation;
+import lotto.dto.output.PrintExceptionDto;
 import lotto.dto.output.PrintGeneratedLottosDto;
 import lotto.dto.output.PrintWinStatisticsDto;
-
-import java.util.Map;
 
 public final class OutputView {
     private OutputView() {
@@ -33,6 +32,10 @@ public final class OutputView {
     public void printWinStatistics(PrintWinStatisticsDto dto) {
         ResultInformation resultInformation = dto.getResultInformation();
         System.out.println(resultInformation.getProfit());
+    }
+
+    public void printException(PrintExceptionDto dto) {
+        System.out.println(dto.getException().getMessage());
     }
 
     private void printMessage(ViewMessage viewMessage) {

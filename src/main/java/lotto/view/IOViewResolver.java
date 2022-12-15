@@ -3,6 +3,7 @@ package lotto.view;
 import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
 import lotto.dto.input.InputWinLotto;
+import lotto.dto.output.PrintExceptionDto;
 import lotto.dto.output.PrintGeneratedLottosDto;
 import lotto.dto.output.PrintWinStatisticsDto;
 import lotto.view.exception.NotFoundViewException;
@@ -33,7 +34,7 @@ public class IOViewResolver {
     private void initOutputViewMappings(OutputView outputView) {
         outputViewMap.put(PrintGeneratedLottosDto.class, dto -> outputView.printGeneratedLottos((PrintGeneratedLottosDto) dto));
         outputViewMap.put(PrintWinStatisticsDto.class, dto -> outputView.printWinStatistics((PrintWinStatisticsDto) dto));
-//        outputViewMap.put(PrintExceptionDto.class, dto -> outputView.printException((PrintExceptionDto) dto));
+        outputViewMap.put(PrintExceptionDto.class, dto -> outputView.printException((PrintExceptionDto) dto));
     }
 
     public <T> T inputViewResolve(final Class<T> type) {
