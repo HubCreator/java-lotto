@@ -25,7 +25,7 @@ public enum Rank {
     }
 
     public static Rank map(int count, boolean hasBonusNumber) {
-        Optional<Rank> rank = Arrays.stream(Rank.values())
+        Optional<Rank> rank = Arrays.stream(values())
                 .filter(m -> (m.count == count && m.bonusNumber == hasBonusNumber))
                 .findFirst();
         return rank.orElse(MATCH0);
