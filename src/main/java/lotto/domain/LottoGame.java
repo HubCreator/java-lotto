@@ -39,7 +39,7 @@ public final class LottoGame {
     }
 
     private Rank getRank(Lotto generatedLotto) {
-        long count = winLotto.matchCount(generatedLotto);
+        int count = winLotto.matchCount(generatedLotto);
         boolean hasBonusNumber = winLotto.hasBonusNumber(generatedLotto);
         return Rank.map(count, hasBonusNumber);
     }

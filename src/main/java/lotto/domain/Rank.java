@@ -12,19 +12,19 @@ public enum Rank {
     MATCH5_BONUS(5, 30_000_000, "{0}개 일치, 보너스 볼 일치 ({1}원)", true),
     MATCH6(6, 2_000_000_000, "{0}개 일치 ({1}원)", false);
 
-    private final long count;
+    private final int count;
     private final int amount;
     private final String message;
     private final boolean bonusNumber;
 
-    Rank(long count, int amount, String message, boolean bonusNumber) {
+    Rank(int count, int amount, String message, boolean bonusNumber) {
         this.count = count;
         this.amount = amount;
         this.message = message;
         this.bonusNumber = bonusNumber;
     }
 
-    public static Rank map(long count, boolean hasBonusNumber) {
+    public static Rank map(int count, boolean hasBonusNumber) {
         Optional<Rank> rank = Arrays.stream(Rank.values())
                 .filter(m -> (m.count == count && m.bonusNumber == hasBonusNumber))
                 .findFirst();

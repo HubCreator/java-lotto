@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public final class WinLotto extends Lotto {
@@ -15,10 +16,10 @@ public final class WinLotto extends Lotto {
         return new WinLotto(winLotto, bonusNumber);
     }
 
-    public long matchCount(Lotto lotto) {
-        return numbers.stream()
-                .filter(lotto::contain)
-                .count();
+    public int matchCount(Lotto lotto) {
+        ArrayList<Integer> copiedNumbers = new ArrayList<>(numbers);
+        copiedNumbers.retainAll(lotto.numbers);
+        return copiedNumbers.size();
     }
 
     public boolean hasBonusNumber(Lotto lotto) {
@@ -37,7 +38,7 @@ public final class WinLotto extends Lotto {
         private final String message;
 
         ErrorMessage(String message) {
-            this.message =  message;
+            this.message = message;
         }
     }
 }
