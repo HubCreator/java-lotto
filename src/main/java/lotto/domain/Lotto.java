@@ -1,9 +1,13 @@
 package lotto.domain;
 
+import lotto.util.RandomNumberGenerator;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Lotto {
+    private static final int MIN = 1;
+    private static final int MAX = 45;
     private static final int COUNT = 6;
 
     private final List<Integer> numbers;
@@ -12,8 +16,8 @@ public class Lotto {
         this.numbers = validateSize(numbers);
     }
 
-    public static Lotto create(List<Integer> numbers) {
-        return new Lotto(numbers);
+    public static Lotto create(RandomNumberGenerator numbers) {
+        return new Lotto(numbers.generate(MIN, MAX, COUNT));
     }
 
     private List<Integer> validateSize(List<Integer> numbers) {
@@ -34,7 +38,6 @@ public class Lotto {
     }
 
     private enum ErrorMessage {
-        INVALID_UNIT("1000 단위로 입력해야 합니다."),
         INVALID_COUNT("6자리 숫자를 입력해야 합니다.");
 
         private static final String errorHead = "[ERROR] ";

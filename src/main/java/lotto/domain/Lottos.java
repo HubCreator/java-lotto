@@ -5,12 +5,9 @@ import lotto.util.RandomNumberGenerator;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Lottos implements Iterable<Lotto>{
-    private static final int MIN = 1;
-    private static final int MAX = 45;
-    private static final int COUNT = 6;
+
     private static final int UNIT = 1000;
 
     private final List<Lotto> lottos;
@@ -23,7 +20,7 @@ public class Lottos implements Iterable<Lotto>{
         int count = validateAmount(purchaseAmount);
         List<Lotto> result = new ArrayList<>();
         for (int index = 0; index < count; index++) {
-            result.add(Lotto.create(generator.generate(MIN, MAX, COUNT)));
+            result.add(Lotto.create(generator));
         }
         return new Lottos(result);
     }
