@@ -1,8 +1,10 @@
 package lotto.controller;
 
-import lotto.domain.Lotto;
+import lotto.domain.Lottos;
 import lotto.domain.Status;
 import lotto.dto.input.InputPurchaseAmountDto;
+import lotto.dto.output.PrintGeneratedLottosDto;
+import lotto.util.RandomNumberGenerator;
 import lotto.view.IOViewResolver;
 
 import java.util.EnumMap;
@@ -10,13 +12,18 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public final class Controller {
+
     private final IOViewResolver ioViewResolver;
     private final Map<Status, Supplier<Status>> statusMap;
 
-    public Controller(IOViewResolver ioViewResolver) {
+    public Controller(IOViewResolver ioViewResolver, RandomNumberGenerator generator) {
         this.ioViewResolver = ioViewResolver;
         this.statusMap = new EnumMap<>(Status.class);
-        initStatusMap();
+        initStatusMap(generator);
+    }
+
+    private void initStatusMap(RandomNumberGenerator generator) {
+        statusMap.put(Status.INPUT_PURCHASE_AMOUNT, () -> inputPurchaseAmount(generator));
     }
 
     public Status run(Status status) {
@@ -28,13 +35,10 @@ public final class Controller {
         }
     }
 
-    private void initStatusMap() {
-        statusMap.put(Status.INPUT_PURCHASE_AMOUNT, this::inputPurchaseAmount);
-    }
-
-    private Status inputPurchaseAmount() {
+    private Status inputPurchaseAmount(RandomNumberGenerator generator) {
         InputPurchaseAmountDto inputPurchaseAmountDto = ioViewResolver.inputViewResolve(InputPurchaseAmountDto.class);
-        Lotto lotto = Lotto.create(inputPurchaseAmountDto.getPurchaseAmount());
+        Lottos lottos = Lottos.create(inputPurchaseAmountDto.getPurchaseAmount(), generator);
+        ioViewResolver.outputViewResolve(new PrintGeneratedLottosDto(lottos));
         return null;
     }
 }
