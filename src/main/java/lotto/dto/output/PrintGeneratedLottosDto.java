@@ -2,7 +2,7 @@ package lotto.dto.output;
 
 import lotto.domain.Lottos;
 
-public class PrintGeneratedLottosDto {
+public final class PrintGeneratedLottosDto {
     private final Lottos lottos;
 
     public PrintGeneratedLottosDto(Lottos lottos) {

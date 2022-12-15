@@ -1,6 +1,6 @@
 package lotto.dto.input;
 
-public class InputPurchaseAmountDto {
+public final class InputPurchaseAmountDto {
     private final int purchaseAmount;
 
     public InputPurchaseAmountDto(int purchaseAmount) {

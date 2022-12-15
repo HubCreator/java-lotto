@@ -1,4 +1,4 @@
 package lotto.view.exception;
 
-public class NotFoundViewException extends RuntimeException {
+public final class NotFoundViewException extends RuntimeException {
 }

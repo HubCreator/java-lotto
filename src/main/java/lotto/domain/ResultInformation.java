@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Map;
 
-public class ResultInformation {
+public final class ResultInformation {
 
     private static final int UNIT = 1000;
     private static final DecimalFormat decimalFormat = new DecimalFormat("###,##0.0%");

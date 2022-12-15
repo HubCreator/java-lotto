@@ -2,7 +2,7 @@ package lotto.dto.output;
 
 import lotto.domain.ResultInformation;
 
-public class PrintWinStatisticsDto {
+public final class PrintWinStatisticsDto {
 
     private final ResultInformation resultInformation;
 

@@ -1,6 +1,6 @@
 package lotto.dto.output;
 
-public class PrintExceptionDto {
+public final class PrintExceptionDto {
     private final IllegalArgumentException exception;
 
     public PrintExceptionDto(IllegalArgumentException exception) {

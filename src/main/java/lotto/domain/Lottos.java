@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class Lottos implements Iterable<Lotto>{
+public final class Lottos implements Iterable<Lotto>{
 
     private static final int UNIT = 1000;
 
