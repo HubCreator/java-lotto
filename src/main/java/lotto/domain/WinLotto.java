@@ -15,6 +15,16 @@ public class WinLotto extends Lotto {
         return new WinLotto(winLotto, bonusNumber);
     }
 
+    public long matchCount(Lotto lotto) {
+        return numbers.stream()
+                .filter(lotto::contain)
+                .count();
+    }
+
+    public boolean hasBonusNumber(Lotto lotto) {
+        return lotto.contain(bonusNumber);
+    }
+
     private static void validateDistinctBonusNumber(List<Integer> winLotto, int bonusNumber) {
         if (winLotto.contains(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.message);

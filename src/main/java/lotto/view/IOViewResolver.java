@@ -4,6 +4,7 @@ import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
 import lotto.dto.input.InputWinLotto;
 import lotto.dto.output.PrintGeneratedLottosDto;
+import lotto.dto.output.PrintWinStatisticsDto;
 import lotto.view.exception.NotFoundViewException;
 
 import java.util.HashMap;
@@ -31,8 +32,7 @@ public class IOViewResolver {
 
     private void initOutputViewMappings(OutputView outputView) {
         outputViewMap.put(PrintGeneratedLottosDto.class, dto -> outputView.printGeneratedLottos((PrintGeneratedLottosDto) dto));
-//        outputViewMap.put(PrintInputMoneyDto.class, dto -> outputView.printInputMoney((PrintInputMoneyDto) dto));
-//        outputViewMap.put(PrintChangeDto.class, dto -> outputView.printChange((PrintChangeDto) dto));
+        outputViewMap.put(PrintWinStatisticsDto.class, dto -> outputView.printWinStatistics((PrintWinStatisticsDto) dto));
 //        outputViewMap.put(PrintExceptionDto.class, dto -> outputView.printException((PrintExceptionDto) dto));
     }
 

@@ -10,7 +10,7 @@ public class Lotto {
     private static final int MAX = 45;
     private static final int COUNT = 6;
 
-    private final List<Integer> numbers;
+    protected final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
         this.numbers = validateSize(numbers);
@@ -19,6 +19,11 @@ public class Lotto {
     public static Lotto create(RandomNumberGenerator numbers) {
         return new Lotto(numbers.generate(MIN, MAX, COUNT));
     }
+
+    public boolean contain(int number) {
+        return numbers.contains(number);
+    }
+
 
     private List<Integer> validateSize(List<Integer> numbers) {
         List<Integer> result = numbers.stream()

@@ -1,13 +1,12 @@
 package lotto.controller;
 
 import lotto.domain.LottoGame;
-import lotto.domain.Lottos;
 import lotto.domain.Status;
-import lotto.domain.WinLotto;
 import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
 import lotto.dto.input.InputWinLotto;
 import lotto.dto.output.PrintGeneratedLottosDto;
+import lotto.dto.output.PrintWinStatisticsDto;
 import lotto.util.RandomNumberGenerator;
 import lotto.view.IOViewResolver;
 
@@ -57,6 +56,7 @@ public final class Controller {
     }
 
     private Status outputWinStatistics() {
-        return null;
+        ioViewResolver.outputViewResolve(new PrintWinStatisticsDto(lottoGame.getResultInformation()));
+        return Status.EXIT;
     }
 }

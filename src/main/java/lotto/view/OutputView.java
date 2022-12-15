@@ -2,7 +2,11 @@ package lotto.view;
 
 import lotto.domain.Lotto;
 import lotto.domain.Lottos;
+import lotto.domain.ResultInformation;
 import lotto.dto.output.PrintGeneratedLottosDto;
+import lotto.dto.output.PrintWinStatisticsDto;
+
+import java.util.Map;
 
 public final class OutputView {
     private OutputView() {
@@ -26,6 +30,11 @@ public final class OutputView {
         System.out.println(result);
     }
 
+    public void printWinStatistics(PrintWinStatisticsDto dto) {
+        ResultInformation resultInformation = dto.getResultInformation();
+        System.out.println(resultInformation.getProfit());
+    }
+
     private void printMessage(ViewMessage viewMessage) {
         System.out.println(viewMessage);
     }
@@ -39,5 +48,4 @@ public final class OutputView {
             this.message = message;
         }
     }
-
 }
