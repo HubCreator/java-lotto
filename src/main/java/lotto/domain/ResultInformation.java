@@ -7,15 +7,16 @@ import java.util.Map;
 
 public class ResultInformation {
 
+    private static final int UNIT = 1000;
     private static final DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
 
     private final Map<Rank, Integer> statistics;
-    private final int lottoCount;
+    private final long puchasedLottoAmount;
     private final String profit;
 
     public ResultInformation(Map<Rank, Integer> statistics, int lottoCount) {
         this.statistics = statistics;
-        this.lottoCount = lottoCount;
+        this.puchasedLottoAmount = (long) lottoCount * UNIT;
         this.profit = calculateProfit();
     }
 
@@ -27,7 +28,7 @@ public class ResultInformation {
             BigDecimal multiplied = amount.multiply(count);
             result = result.add(multiplied);
         }
-        BigDecimal divide = result.divide(BigDecimal.valueOf(lottoCount), RoundingMode.HALF_EVEN);
+        BigDecimal divide = result.divide(BigDecimal.valueOf(puchasedLottoAmount), RoundingMode.HALF_EVEN);
         return decimalFormat.format(divide.multiply(BigDecimal.valueOf(100)));
     }
 
