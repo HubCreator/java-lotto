@@ -39,6 +39,8 @@ public final class Controller {
         } catch (IllegalArgumentException exception) {
             ioViewResolver.outputViewResolve(new PrintExceptionDto(exception));
             return status;
+        } catch (Exception exception) {
+            return Status.EXIT;
         }
     }
 
