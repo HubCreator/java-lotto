@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import lotto.util.RandomNumberGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -14,7 +15,7 @@ class LottosTest {
     @Test
     void 올바르지_않은_단위_입력() {
         assertThatThrownBy(() -> Lottos.create(1001,
-                (min, max, count) -> List.of(1, 2, 3, 4, 5, 6)))
+                        () -> List.of(1, 2, 3, 4, 5, 5)))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -28,7 +29,7 @@ class LottosTest {
     )
     void 올바른_가격_입력(int purchaseAmount, int lottoCount) {
         Lottos lottos = Lottos.create(purchaseAmount,
-                (min, max, count) -> List.of(1, 2, 3, 4, 5, 6));
+                () -> List.of(1, 2, 3, 4, 5, 6));
         assertThat(lottos.getLottoCount()).isSameAs(lottoCount);
     }
 }

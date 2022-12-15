@@ -25,15 +25,15 @@ public class Lottos implements Iterable<Lotto>{
         return new Lottos(result);
     }
 
+    public int getLottoCount() {
+        return lottos.size();
+    }
+
     private static int validateAmount(int amount) {
         if (amount % UNIT != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT.message);
         }
         return amount / UNIT;
-    }
-
-    public int getLottoCount() {
-        return lottos.size();
     }
 
     @Override

@@ -17,7 +17,7 @@ class LottoGameTest {
 
     @BeforeEach
     void name() {
-        lottoGame = new LottoGame(1000, (min, max, count) -> List.of(1, 2, 3, 4, 5, 6));
+        lottoGame = new LottoGame(1000, () -> List.of(1, 2, 3, 4, 5, 6));
     }
 
     @Test

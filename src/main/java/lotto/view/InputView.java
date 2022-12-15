@@ -5,12 +5,14 @@ import lotto.dto.input.InputBonusNumber;
 import lotto.dto.input.InputPurchaseAmountDto;
 import lotto.dto.input.InputWinLotto;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public final class InputView {
+
+    public static final String WIN_LOTTO_INPUT_DELIMITER = ",";
+
     private InputView() {
     }
 
@@ -41,7 +43,7 @@ public final class InputView {
     }
 
     private List<Integer> validateWinLotto(String input) {
-        return Arrays.stream(input.split(","))
+        return Arrays.stream(input.split(WIN_LOTTO_INPUT_DELIMITER))
                 .map(this::validateDigit)
                 .collect(Collectors.toList());
     }
