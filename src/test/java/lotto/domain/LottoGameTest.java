@@ -10,7 +10,6 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class LottoGameTest {
 
@@ -27,7 +26,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "200,000,000.0");
+        assertEquals(resultInformation.getProfit(), "200,000,000.0%");
     }
 
     @Test
@@ -36,7 +35,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "3,000,000.0");
+        assertEquals(resultInformation.getProfit(), "3,000,000.0%");
     }
 
     @Test
@@ -45,7 +44,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "150,000.0");
+        assertEquals(resultInformation.getProfit(), "150,000.0%");
     }
 
     @Test
@@ -54,7 +53,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "5,000.0");
+        assertEquals(resultInformation.getProfit(), "5,000.0%");
     }
 
     @Test
@@ -63,7 +62,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "500.0");
+        assertEquals(resultInformation.getProfit(), "500.0%");
     }
 
     @Test
@@ -72,7 +71,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "0.0");
+        assertEquals(resultInformation.getProfit(), "0.0%");
     }
 
     @Test
@@ -81,7 +80,7 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "0.0");
+        assertEquals(resultInformation.getProfit(), "0.0%");
     }
 
     @Test
@@ -90,6 +89,6 @@ class LottoGameTest {
         ResultInformation resultInformation = lottoGame.getResultInformation();
         Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(statistics.size(), 1);
-        assertEquals(resultInformation.getProfit(), "0.0");
+        assertEquals(resultInformation.getProfit(), "0.0%");
     }
 }

@@ -8,7 +8,7 @@ import java.util.Map;
 public class ResultInformation {
 
     private static final int UNIT = 1000;
-    private static final DecimalFormat decimalFormat = new DecimalFormat("###,##0.0");
+    private static final DecimalFormat decimalFormat = new DecimalFormat("###,##0.0%");
 
     private final Map<Rank, Integer> statistics;
     private final long puchasedLottoAmount;
@@ -28,8 +28,8 @@ public class ResultInformation {
             BigDecimal multiplied = amount.multiply(count);
             result = result.add(multiplied);
         }
-        BigDecimal divide = result.divide(BigDecimal.valueOf(puchasedLottoAmount), RoundingMode.HALF_EVEN);
-        return decimalFormat.format(divide.multiply(BigDecimal.valueOf(100)));
+        BigDecimal divide = result.divide(BigDecimal.valueOf(puchasedLottoAmount), 3, RoundingMode.HALF_DOWN);
+        return decimalFormat.format(divide);
     }
 
     public Map<Rank, Integer> getStatistics() {
