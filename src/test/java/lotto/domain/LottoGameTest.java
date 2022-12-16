@@ -6,7 +6,6 @@ import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
-import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -24,7 +23,6 @@ class LottoGameTest {
     void _6개_맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 2, 3, 4, 5, 6), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "200,000,000.0%");
     }
 
@@ -32,7 +30,6 @@ class LottoGameTest {
     void _5개와_보너스_번호를_맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 2, 3, 4, 5, 8), 6);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "3,000,000.0%");
     }
 
@@ -40,7 +37,6 @@ class LottoGameTest {
     void _5개_맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 2, 3, 4, 5, 8), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "150,000.0%");
     }
 
@@ -48,7 +44,6 @@ class LottoGameTest {
     void _4개_맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 2, 3, 4, 8, 9), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "5,000.0%");
     }
 
@@ -56,7 +51,6 @@ class LottoGameTest {
     void _3개_맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 2, 3, 8, 9, 10), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "500.0%");
     }
 
@@ -64,7 +58,6 @@ class LottoGameTest {
     void _2개_맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 2, 8, 9, 10, 11), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "0.0%");
     }
 
@@ -72,7 +65,6 @@ class LottoGameTest {
     void _1개__맞춘_경우() {
         lottoGame.addWinLotto(List.of(1, 8, 9, 10, 11, 12), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "0.0%");
     }
 
@@ -80,7 +72,6 @@ class LottoGameTest {
     void _0개__맞춘_경우() {
         lottoGame.addWinLotto(List.of(8, 9, 10, 11, 12, 13), 7);
         ResultInformation resultInformation = lottoGame.getResultInformation();
-        Map<Rank, Integer> statistics = resultInformation.getStatistics();
         assertEquals(resultInformation.getProfit(), "0.0%");
     }
 }
