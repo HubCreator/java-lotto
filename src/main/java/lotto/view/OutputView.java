@@ -48,13 +48,8 @@ public final class OutputView {
             if (value == Rank.MATCH0) {
                 continue;
             }
-            if (statistics.containsKey(value)) {
-                result.append(String.format(ViewMessage.NORMAL_FORMAT.message,
-                        value.getMessage(), statistics.get(value)));
-                continue;
-            }
             result.append(String.format(ViewMessage.NORMAL_FORMAT.message,
-                    value.getMessage(), 0));
+                    value.getMessage(), statistics.get(value)));
         }
         return result.toString();
     }

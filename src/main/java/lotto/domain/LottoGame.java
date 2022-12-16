@@ -2,6 +2,7 @@ package lotto.domain;
 
 import lotto.util.RandomNumberGenerator;
 
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -30,12 +31,18 @@ public final class LottoGame {
     }
 
     public Map<Rank, Integer> calculateStatistics() {
-        Map<Rank, Integer> result = new EnumMap<>(Rank.class);
+        Map<Rank, Integer> resultMap = new EnumMap<>(Rank.class);
+        initMap(resultMap);
         for (Lotto generatedLotto : generatedLottos) {
             Rank rank = getRank(generatedLotto);
-            result.put(rank, result.getOrDefault(rank, 0) + 1);
+            resultMap.put(rank, resultMap.get(rank) + 1);
         }
-        return result;
+        return resultMap;
+    }
+
+    private void initMap(Map<Rank, Integer> result) {
+        Arrays.stream(Rank.values())
+                .forEach(rank -> result.put(rank, 0));
     }
 
     private Rank getRank(Lotto generatedLotto) {
